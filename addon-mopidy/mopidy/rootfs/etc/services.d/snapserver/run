@@ -1,0 +1,10 @@
+#!/command/with-contenv bashio
+# ==============================================================================
+# Home Assistant Community Add-on: Mopidy
+# Runs the SNAPSERVER
+# ==============================================================================
+declare -a options
+bashio::log.info "Starting SnapServer..."
+
+
+exec /usr/bin/snapserver -c /etc/snapserver.conf
