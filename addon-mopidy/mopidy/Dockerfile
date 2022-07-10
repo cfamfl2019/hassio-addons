@@ -42,7 +42,6 @@ RUN \
     mopidy-podcast=3.0.1-1 \
     mopidy-soundcloud=3.0.1-1 \
     mopidy-tunein=1.1.0-1 \
-    wget\
     \
     && curl https://bootstrap.pypa.io/get-pip.py | python3 \
     && pip3 install --no-cache-dir -r /tmp/requirements.txt \
@@ -68,7 +67,7 @@ RUN \
     && find /tmp/ -mindepth 1  -delete
 
 ENV SNAPCAST_VERSION=0.26.0
-RUN wget https://github.com/badaix/snapcast/releases/download/v${SNAPCAST_VERSION}/snapserver_${SNAPCAST_VERSION}-1_amd64.deb
+RUN apt install -y wget && wget https://github.com/badaix/snapcast/releases/download/v${SNAPCAST_VERSION}/snapserver_${SNAPCAST_VERSION}-1_amd64.deb
 
 RUN apt install -y ./snapserver_${SNAPCAST_VERSION}-1_amd64.deb \
     && rm snapserver_${SNAPCAST_VERSION}-1_amd64.deb
